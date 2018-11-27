@@ -1,6 +1,6 @@
 # Homework2
 
-### Summarize partitions of a genome assembly
+## Summarize partitions of a genome assembly
 
 We will be revisiting the Drosophila melanogaster genome. As with Homework 3, start at flybase.org. Go to the most current download genomes section and download the gzipped fasta file for all chromosomes.
 
@@ -22,3 +22,12 @@ We will be revisiting the Drosophila melanogaster genome. As with Homework 3, st
     $ ls emotion  
 
 "$ ls emotion" will help you to check whether this procedure worked. This shows the directory called happy only because I remove "sad" directory from "emotion" 
+
+#### Plots of the following for the whole genome, for all sequences ≤ 100kb, and all sequences > 100kb:
+
+1. Sequence length distribution
+2. Sequence GC% distribution
+3. Cumulative genome size sorted from largest to smallest sequences
+
+
+## Genome assembly
