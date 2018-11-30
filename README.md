@@ -15,8 +15,8 @@ We will be revisiting the Drosophila melanogaster genome. As with Homework 3, st
 
 ##### Module load
 
-                  $ module load jje/jjeutils jje/kent
-                  $ 
+      $ module load jje/jjeutils jje/kent   
+      $ 
    
 1. Total number of nucleotides
 2. Total number of Ns
