@@ -16,7 +16,10 @@ We will be revisiting the Drosophila melanogaster genome. As with Homework 3, st
 ##### Module load
 
       $ module load jje/jjeutils jje/kent   
-      $ 
+
+##### Partitioning with BIOAWK
+      $ bioawk -c fastx 'length($seq)  <= 100000{ print ">"$name; print $seq }' dmel-all-chromosome-r6.24.fasta | sort -rn > dmel-all-chromosome-r6.24-lessandequal100kb.fasta
+      $ bioawk -c fastx 'length($seq)  > 100000{ print ">"$name; print $seq }' dmel-all-chromosome-r6.24.fasta | sort -rn > dmel-all-chromosome-r6.24-greater100kb.fasta
    
 1. Total number of nucleotides
 2. Total number of Ns
