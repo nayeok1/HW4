@@ -1,4 +1,4 @@
-# Homework2
+# Homework 4
 
 ## Summarize partitions of a genome assembly
 
