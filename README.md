@@ -131,7 +131,7 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
           $ module load jje/jjeutils perl
           $ faSplitByN dmel-all-chromosome-r6.24.fasta dmel-all-chromosome-r6.24-contass.fasta
          
-####
+#### From Edwin note
 
           $ # Loading of binaries via module load or PATH reassignment
             source /pub/jje/ee282/bin/.qmbashrc
