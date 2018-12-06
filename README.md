@@ -67,3 +67,16 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 
 
 ## Genome assembly
+
+### Assemble a genome from MinION reads
+
+1. Download the reads from here   
+2. Use minimap to overlap reads     
+3. Use miniasm to construct an assembly   
+
+### Assembly assessment
+
+1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
+2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
+3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
+4. Calculate BUSCO scores of both assemblies and compare them   
