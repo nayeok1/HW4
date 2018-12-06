@@ -126,8 +126,30 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
           
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 
+#### Module load and make contig assemby using faSplitByN
+
           $ module load jje/jjeutils perl
-          $ faSplitByN dmel-all-chromosome-r6.24.fasta dmel-all-chromosome-r6.24-conassem.fasta
+          $ faSplitByN dmel-all-chromosome-r6.24.fasta dmel-all-chromosome-r6.24-contass.fasta
+         
+####
+
+          $ # Loading of binaries via module load or PATH reassignment
+            source /pub/jje/ee282/bin/.qmbashrc
+            module load gnuplot
+
+            # Query and Reference Assignment. State my prefix for output filenames
+            REF="dmel-all-chromosome-r6.24-contass.fasta"
+            PREFIX="flybase"
+            SGE_TASK_ID=1
+            QRY=$(ls u*.fa | head -n $SGE_TASK_ID | tail -n 1)
+            PREFIX=${PREFIX}_$(basename ${QRY} .fa)
+
+            # Please use a value between 75-150 for -c. The value of 1000 is too strict.
+            nucmer -l 100 -c 150 -d 10 -banded -D 5 -prefix ${PREFIX} ${REF} ${QRY}
+            mummerplot --fat --layout --filter -p ${PREFIX} ${PREFIX}.delta \
+            -R ${REF} -Q ${QRY} --postscript
+
+          
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 4. Calculate BUSCO scores of both assemblies and compare them   
