@@ -87,40 +87,49 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
         $ [M::main] ===> Step 1: reading read mappings <===
           [M::ma_hit_read::0.001*1.74] read 0 hits; stored 0 hits and 0 sequences (0 bp)
           [M::main] ===> Step 2: 1-pass (crude) read selection <===
-            [M::ma_hit_sub::0.001*1.31] 0 query sequences remain after sub
-            [M::ma_hit_cut::0.001*1.19] 0 hits remain after cut
-            [M::ma_hit_flt::0.001*1.07] 0 hits remain after filtering; crude coverage after filtering: -nan
-            [M::main] ===> Step 3: 2-pass (fine) read selection <===
-            [M::ma_hit_sub::0.001*0.91] 0 query sequences remain after sub
-            [M::ma_hit_cut::0.001*0.84] 0 hits remain after cut
-            [M::ma_hit_contained::0.001*0.79] 0 sequences and 0 hits remain after containment removal
-            [M::main] ===> Step 4: graph cleaning <===
-            [M::ma_sg_gen] read 0 arcs
-            [M::main] ===> Step 4.1: transitive reduction <===
-            [M::asg_arc_del_trans] transitively reduced 0 arcs
-            [M::main] ===> Step 4.2: initial tip cutting and bubble popping <===
-            [M::asg_cut_tip] cut 0 tips
-            [M::asg_arc_del_multi] removed 0 multi-arcs
-            [M::asg_arc_del_asymm] removed 0 asymmetric arcs
-            [M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips
-            [M::main] ===> Step 4.3: cutting short overlaps (3 rounds in total) <===
-            [M::asg_arc_del_short] removed 0 short overlaps
-            [M::asg_arc_del_short] removed 0 short overlaps
-            [M::asg_arc_del_short] removed 0 short overlaps
-            [M::main] ===> Step 4.4: removing short internal sequences and bi-loops <===
-            [M::asg_cut_internal] cut 0 internal sequences
-            [M::asg_cut_biloop] cut 0 small bi-loops
-            [M::asg_cut_tip] cut 0 tips
-            [M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips
-            [M::main] ===> Step 4.5: aggressively cutting short overlaps <===
-            [M::asg_arc_del_short] removed 0 short overlaps
-            [M::main] ===> Step 5: generating unitigs <===
-            [M::main] Version: 0.2-r168-dirty
-            [M::main] CMD: miniasm -f reads.fq reads.paf.gz
-            [M::main] Real time: 0.003 sec; CPU: 0.001 sec
+          [M::ma_hit_sub::0.001*1.31] 0 query sequences remain after sub
+          [M::ma_hit_cut::0.001*1.19] 0 hits remain after cut
+          [M::ma_hit_flt::0.001*1.07] 0 hits remain after filtering; crude coverage after filtering: -nan
+          [M::main] ===> Step 3: 2-pass (fine) read selection <===
+          [M::ma_hit_sub::0.001*0.91] 0 query sequences remain after sub
+          [M::ma_hit_cut::0.001*0.84] 0 hits remain after cut
+          [M::ma_hit_contained::0.001*0.79] 0 sequences and 0 hits remain after containment removal
+          [M::main] ===> Step 4: graph cleaning <===
+          [M::ma_sg_gen] read 0 arcs
+          [M::main] ===> Step 4.1: transitive reduction <===
+          [M::asg_arc_del_trans] transitively reduced 0 arcs
+          [M::main] ===> Step 4.2: initial tip cutting and bubble popping <===
+          [M::asg_cut_tip] cut 0 tips
+          [M::asg_arc_del_multi] removed 0 multi-arcs
+          [M::asg_arc_del_asymm] removed 0 asymmetric arcs
+          [M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips
+          [M::main] ===> Step 4.3: cutting short overlaps (3 rounds in total) <===
+          [M::asg_arc_del_short] removed 0 short overlaps
+          [M::asg_arc_del_short] removed 0 short overlaps
+          [M::asg_arc_del_short] removed 0 short overlaps
+          [M::main] ===> Step 4.4: removing short internal sequences and bi-loops <===
+          [M::asg_cut_internal] cut 0 internal sequences
+          [M::asg_cut_biloop] cut 0 small bi-loops
+          [M::asg_cut_tip] cut 0 tips
+          [M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips
+          [M::main] ===> Step 4.5: aggressively cutting short overlaps <===
+          [M::asg_arc_del_short] removed 0 short overlaps
+          [M::main] ===> Step 5: generating unitigs <===
+          [M::main] Version: 0.2-r168-dirty
+          [M::main] CMD: miniasm -f reads.fq reads.paf.gz
+          [M::main] Real time: 0.003 sec; CPU: 0.001 sec
 ### Assembly assessment
 
 1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
+                  
+          $ n50 () { bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
+          | sort -rn \
+          | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '}
+
+          $ awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $reads.gfa \
+          | tee >(n50 /dev/stdin > $reports/n50.txt) \
+          | fold -w 60 > unitigs.fa
+          
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 4. Calculate BUSCO scores of both assemblies and compare them   
