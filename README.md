@@ -73,13 +73,17 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 1. Download the reads from here   
 
         $ cd HW4
+        # mkdir assembly
+        # cd assembly
         $ wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz #downloading data
-        $ md5sum iso1_onp_a2_1kb.fastq.gz #checking the file integrity   
-        $ gunzip iso1_onp_a2_1kb.fastq.gz #unzipping the file
+        $ ln -s /data/users/nayeok1/HW4/assembly/iso1_onp_a2_1kb.fastq reads.fq
         
 2. Use minimap to overlap reads     
+
+        $ minimap -x ava-pb -t8 reads.fq reads.fq | gzip -1 > reads.paf.gz
 3. Use miniasm to construct an assembly   
 
+        $ miniasm -f reads.fq reads.paf.gz > reads.gfa
 ### Assembly assessment
 
 1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
