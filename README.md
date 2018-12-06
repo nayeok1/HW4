@@ -71,6 +71,10 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 ### Assemble a genome from MinION reads
 
 1. Download the reads from here   
+
+        $ cd HW4
+        $ wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz #downloading data 
+
 2. Use minimap to overlap reads     
 3. Use miniasm to construct an assembly   
 
