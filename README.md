@@ -122,13 +122,7 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 
 1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
                   
-          $ n50 () { bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
-          | sort -rn \
-          | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '}
-
-          $ awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $reads.gfa \
-          | tee >(n50 /dev/stdin > $reports/n50.txt) \
-          | fold -w 60 > unitigs.fa
+          
           
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 
