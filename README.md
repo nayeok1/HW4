@@ -61,10 +61,26 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 
 ### Plots of the following for the whole genome, for all sequences ≤ 100kb, and all sequences > 100kb:
 
+#### Module load
+
+     $ module load jje/jjeutils perl rstudio/0.99.9.9
+
+#### Plots for whole genome
 1. Sequence length distribution
+
+
 2. Sequence GC% distribution
 3. Cumulative genome size sorted from largest to smallest sequences
 
+#### Plots for sequence ≤ 100kb
+1. Sequence length distribution
+2. Sequence GC% distribution
+3. Cumulative genome size sorted from largest to smallest sequences#### Plots for whole genome
+
+#### Plots for sequence > 100kb
+1. Sequence length distribution
+2. Sequence GC% distribution
+3. Cumulative genome size sorted from largest to smallest sequences#### Plots for whole genome
 
 ## Genome assembly
 
