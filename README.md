@@ -76,7 +76,7 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 #### Plots for sequence ≤ 100kb
 1. Sequence length distribution
 
-         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-lessandequal100kb.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-lessandequal-genome.length
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-lessandequal100kb.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-less-genome.length
          $ plotCDF2 length-less-genome.length length-less-genome.png
 2. Sequence GC% distribution
 3. Cumulative genome size sorted from largest to smallest sequences
