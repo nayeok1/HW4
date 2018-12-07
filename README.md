@@ -74,8 +74,9 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
          
 1. Sequence length distribution   
 
-![len-whole](https://blogfiles.pstatic.net/MjAxODEyMDZfMjMx/MDAxNTQ0MDk2NDA5NjIx.dYbVr_AdfEXVGTCAO-t4T8N7p1Zjqttdrzm9SptmL6Ig.-BELOSgyJzbYZtHz7KGJvXxK93OADlm_55ro2tnSTH0g.PNG.nayeonkim93/length-whole-genome.png)
+![len-whole](https://blogfiles.pstatic.net/MjAxODEyMDZfMjMx/MDAxNTQ0MDk2NDA5NjIx.dYbVr_AdfEXVGTCAO-t4T8N7p1Zjqttdrzm9SptmL6Ig.-BELOSgyJzbYZtHz7KGJvXxK93OADlm_55ro2tnSTH0g.PNG.nayeonkim93/length-whole-genome.png)   
 2. Sequence GC% distribution   
+![gc-whole](https://blogfiles.pstatic.net/MjAxODEyMDdfMTU1/MDAxNTQ0MTg2ODc2NDY0.awjcP3y71vLdJdsa8-vErJzFYnOFHqznkUP1aeSqT7Ig.LCGLjIa3jFsBK_4emJz3DRFvUKb0aW7f4CXcohYOtacg.JPEG.nayeonkim93/gc_whole.jpeg)
 3. Cumulative genome size sorted from largest to smallest sequences   
 
 #### Plots for sequence ≤ 100kb
@@ -87,8 +88,9 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
          
 1. Sequence length distribution   
 
-![len-less](https://blogfiles.pstatic.net/MjAxODEyMDZfMTIz/MDAxNTQ0MDk2NDE1OTc1.wgP88M7T4ml8YY9kOQf7Kdan9EAsRma3Ob_IVxyzO7kg.W6tvCuNmKciW2upqL0UeNG0tAERO_PIs-lxgjT4KTqcg.PNG.nayeonkim93/length-less-genome.png)
+![len-less](https://blogfiles.pstatic.net/MjAxODEyMDZfMTIz/MDAxNTQ0MDk2NDE1OTc1.wgP88M7T4ml8YY9kOQf7Kdan9EAsRma3Ob_IVxyzO7kg.W6tvCuNmKciW2upqL0UeNG0tAERO_PIs-lxgjT4KTqcg.PNG.nayeonkim93/length-less-genome.png)   
 2. Sequence GC% distribution   
+![gc-less](https://blogfiles.pstatic.net/MjAxODEyMDdfMjc5/MDAxNTQ0MTg2ODcyNzU2.7MZMJuxUSDtlL_nNib7-CF__2cPrnZFpKDmqO0cBLWgg.k-LsH36W7IHkcj_lPsSWUxKsEmLYQG3C7M8G00yHBu4g.JPEG.nayeonkim93/gc_less.jpeg)
 3. Cumulative genome size sorted from largest to smallest sequences   
 
 #### Plots for sequence > 100kb
@@ -100,7 +102,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 1. Sequence length distribution    
 
 ![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)
-2. Sequence GC% distribution   
+2. Sequence GC% distribution  
+![gc-great](https://blogfiles.pstatic.net/MjAxODEyMDdfMjM4/MDAxNTQ0MTg2ODY4MTUx.mm1wetLqCkDghUCLt2dy8Be1vnD8q1E0qDpBDtCzjFMg.MfmEU4bCgu6lM9M2iDbUjQpc8aqfGhyOu9AD86_-fHUg.JPEG.nayeonkim93/gc_greater.jpeg)   
 3. Cumulative genome size sorted from largest to smallest sequences   
 
 ## Genome assembly
