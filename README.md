@@ -195,4 +195,22 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
           
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
-4. Calculate BUSCO scores of both assemblies and compare them   
+4. Calculate BUSCO scores of both assemblies and compare them  
+
+       module load augustus/3.2.1
+       module load blast/2.2.31 hmmer/3.1b2 boost/1.54.0
+       source /pub/jje/ee282/bin/.buscorc
+
+       INPUTTYPE="geno"
+       MYLIBDIR="/pub/jje/ee282/bin/busco/lineages/"
+       MYLIB="diptera_odb9"
+       OPTIONS="-l ${MYLIBDIR}${MYLIB}"
+       ##OPTIONS="${OPTIONS} -sp 4577"
+       QRY="unitigs.fasta"
+       ###Please change this based on your qry file. I.e. .fasta or .fa or .gfa
+       MYEXT=".fasta" 
+
+       #my busco run
+       #you can change the value after -c to tell busco how many cores to run on. Here we are using only 1 core.
+       BUSCO.py -c 1 -i ${QRY} -m ${INPUTTYPE} -o $(basename ${QRY} ${MYEXT})_${MYLIB}${SPTAG} ${OPTIONS}
+
