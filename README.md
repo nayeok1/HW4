@@ -103,7 +103,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
  
 1. Sequence length distribution    
 
-![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)
+![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)   
 2. Sequence GC% distribution  
 
 ![gc-great](https://blogfiles.pstatic.net/MjAxODEyMDdfMjM4/MDAxNTQ0MTg2ODY4MTUx.mm1wetLqCkDghUCLt2dy8Be1vnD8q1E0qDpBDtCzjFMg.MfmEU4bCgu6lM9M2iDbUjQpc8aqfGhyOu9AD86_-fHUg.JPEG.nayeonkim93/gc_greater.jpeg)   
