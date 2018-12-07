@@ -123,7 +123,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 2. Use minimap to overlap reads  
 
         $ qrsh -q epyc,abio128,free88i,free72i -pe openmp 32      
-        $minimap -t 32 -Sw5 -L100 -m0 reads.fq{,} | gzip -1 > onp.paf.gz
+        $ minimap -t 32 -Sw5 -L100 -m0 reads.fq{,} | gzip -1 > onp.paf.gz
         
 3. Use miniasm to construct an assembly   
 
