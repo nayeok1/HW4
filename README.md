@@ -113,35 +113,37 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
 ### Assemble a genome from MinION reads
 
-1. Download the reads from here   
-
+1. Download the reads from here  
+     
         $ cd HW4
         $ wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz #downloading data
         $ gunzip iso1_onp_a2_1kb.fastq reads.fq
         $ ln -sf iso1_onp_a2_1kb.fastq reads.fq
         
-2. Use minimap to overlap reads     
+2. Use minimap to overlap reads  
 
-        $ minimap -x ava-pb -t8 reads.fq reads.fq | gzip -1 > reads.paf.gz
+        $ qrsh -q epyc,abio128,free88i,free72i -pe openmp 32      
+        $minimap -t 32 -Sw5 -L100 -m0 reads.fq{,} | gzip -1 > onp.paf.gz
+        
 3. Use miniasm to construct an assembly   
 
-        $ miniasm -f reads.fq reads.paf.gz > reads.gfa
+        $ miniasm -f reads.fq onp.paf.gz > reads.gfa
         
 ### Assembly assessment
 
 1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
                   
-          $ qrsh -q epyc,abio128,free88i,free72i -pe openmp 32        
+               
           $ n50 () {
             bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
             | sort -rn \
             | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
             }
-            
-            $minimap -t 32 -Sw5 -L100 -m0 reads.fq{,} | gzip -1 > onp.paf.gz
-            
-            $miniasm -f reads.fq onp.paf.gz > reads.gfa
-
+          $ awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' reads.gfa \
+            | tee >(n50 /dev/stdin > n50.txt) \
+            | fold -w 60 \
+            > unitigs.fa  
+ 
           
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 
