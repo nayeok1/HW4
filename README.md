@@ -70,7 +70,7 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
       
          $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-whole-genome.length # sequence length
          $ plotCDF2 length-whole-genome.length length-whole-genome.png # output graph
-         $ $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24.fasta > gc-whole-genome.txt # I have attached R code for the distribution
+         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24.fasta > gc-whole-genome.txt # I have attached R code for the distribution
          
 1. Sequence length distribution   
 
@@ -95,7 +95,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
          $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-greater100kb.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-great-genome.length
          $ plotCDF2 length-great-genome.length length-great-genome.png
-         $ $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-greater100kb.fasta > gc-great-genome.txt
+         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-greater100kb.fasta > gc-great-genome.txt
  
 1. Sequence length distribution    
 
