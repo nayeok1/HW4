@@ -155,8 +155,9 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 #### From Edwin note
 
           $ # Loading of binaries via module load or PATH reassignment
+            module unload jje/jjeutils
             source /pub/jje/ee282/bin/.qmbashrc
-            module load gnuplot
+            module load gnuplot/4.6.0
 
             # Query and Reference Assignment. State my prefix for output filenames
             REF="dmel-all-chromosome-r6.24-contass.fasta"
@@ -168,7 +169,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             # Please use a value between 75-150 for -c. The value of 1000 is too strict.
             nucmer -l 100 -c 150 -d 10 -banded -D 5 -prefix ${PREFIX} ${REF} ${QRY}
             mummerplot --fat --layout --filter -p ${PREFIX} ${PREFIX}.delta \
-            -R ${REF} -Q ${QRY} --postscript
+            -R ${REF} -Q ${QRY} --png
 
           
 
