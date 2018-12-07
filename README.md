@@ -117,6 +117,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
         $ cd HW4
         $ wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz #downloading data
+        $ gunzip iso1_onp_a2_1kb.fastq reads.fq
         $ ln -sf iso1_onp_a2_1kb.fastq reads.fq
         
 2. Use minimap to overlap reads     
