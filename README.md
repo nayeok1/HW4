@@ -65,14 +65,15 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 
      $ module load jje/jjeutils perl rstudio/0.99.9.9
 
-#### Plots for whole genome
-`        
+#### Plots for whole genome        
 
          # For sequence length distribution   
-         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta > length-whole-genome.txt # I have attached R code for the distribution 
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta > length-whole-genome.txt 
+         # I have attached R code for the distribution 
          
          # For GC% distribution
-         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24.fasta > gc-whole-genome.txt # I have attached R code for the distribution
+         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24.fasta > gc-whole-genome.txt 
+         # I have attached R code for the distribution
          
          # For cumulative genome size 
          $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-whole-genome.length # sequence length
