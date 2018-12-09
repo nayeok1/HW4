@@ -81,7 +81,8 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
 
 1. Sequence length distribution   
 
-![whole]
+![whole](https://blogfiles.pstatic.net/MjAxODEyMDlfMjAz/MDAxNTQ0MzI0MTAwNzY0.WZ5oPHz9ff6ULcC5K6ynG1Rh8ir99gsWDmDbyrKY1Tcg.G1_9Z-6exXFQu4hdRwxGHZB_ub72UBKv0ODP-90n7_Eg.JPEG.nayeonkim93/whole_genome_length.jpeg)
+
 2. Sequence GC% distribution   
 
 ![gc-whole](https://blogfiles.pstatic.net/MjAxODEyMDdfMTU1/MDAxNTQ0MTg2ODc2NDY0.awjcP3y71vLdJdsa8-vErJzFYnOFHqznkUP1aeSqT7Ig.LCGLjIa3jFsBK_4emJz3DRFvUKb0aW7f4CXcohYOtacg.JPEG.nayeonkim93/gc_whole.jpeg)   
@@ -103,7 +104,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
          
 1. Sequence length distribution   
 
-![less]()
+![less](https://blogfiles.pstatic.net/MjAxODEyMDlfMTA0/MDAxNTQ0MzI0MTA1NTkz.BcamqdgHiYJEWf2vsTWHOKbI0xMAAO5wlPVSdF2EKHYg.ulO7DewM_e7aTsTH4J_urisFm3bqw15QisRE1s27CFIg.JPEG.nayeonkim93/less_genome_length.jpeg)
+
 2. Sequence GC% distribution   
 
 ![gc-less](https://blogfiles.pstatic.net/MjAxODEyMDdfMjc5/MDAxNTQ0MTg2ODcyNzU2.7MZMJuxUSDtlL_nNib7-CF__2cPrnZFpKDmqO0cBLWgg.k-LsH36W7IHkcj_lPsSWUxKsEmLYQG3C7M8G00yHBu4g.JPEG.nayeonkim93/gc_less.jpeg)   
@@ -124,7 +126,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
  
 1. Sequence length distribution    
 
-![great]()
+![great](https://blogfiles.pstatic.net/MjAxODEyMDlfMTEz/MDAxNTQ0MzI0MTA4NDA0.OSsqByd2EAG-rj1WjnyttTLDutBZ-J4pFC8K8BLpaSAg.8R_a0Pr5tLbrse0zMqoBvo1qjPUAVdOMG05ZBqjtB2Qg.JPEG.nayeonkim93/great_genome_length.jpeg)
+
 2. Sequence GC% distribution  
 
 ![gc-great](https://blogfiles.pstatic.net/MjAxODEyMDdfMjM4/MDAxNTQ0MTg2ODY4MTUx.mm1wetLqCkDghUCLt2dy8Be1vnD8q1E0qDpBDtCzjFMg.MfmEU4bCgu6lM9M2iDbUjQpc8aqfGhyOu9AD86_-fHUg.JPEG.nayeonkim93/gc_greater.jpeg)  
