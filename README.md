@@ -228,7 +228,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
        #you can change the value after -c to tell busco how many cores to run on. Here we are using only 1 core.
        BUSCO.py -c 1 -i ${QRY} -m ${INPUTTYPE} -o $(basename ${QRY} ${MYEXT})_${MYLIB}${SPTAG} ${OPTIONS}
        
-       C:0.5%[S:0.5%,D:0.0%],F:1.1%,M:98.4%,n:2799
+       
+C:0.5%[S:0.5%,D:0.0%],F:1.1%,M:98.4%,n:2799
 
 13 Complete BUSCOs (C)
 
