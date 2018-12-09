@@ -181,7 +181,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
           $ module load jje/jjeutils perl
           $ faSplitByN dmel-all-chromosome-r6.24.fasta dmel-all-chromosome-r6.24-contass.fasta
          
-#### From Edwin note
+#### Using Mummer
 
           $ # Loading of binaries via module load or PATH reassignment
             module unload jje/jjeutils
@@ -210,6 +210,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
        plotCDF2 {dmel-all-chromosome-contass-r6.24,unitigs}. contiguity_plot.png
        
 4. Calculate BUSCO scores of both assemblies and compare them  
+
+#### Running Busco run
 
        module load augustus/3.2.1
        module load blast/2.2.31 hmmer/3.1b2 boost/1.54.0
