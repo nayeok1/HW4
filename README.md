@@ -66,48 +66,71 @@ Now I know that I have successfully saved two files with sequence ≤ 100kb and 
      $ module load jje/jjeutils perl rstudio/0.99.9.9
 
 #### Plots for whole genome
-
-      
-         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-whole-genome.length # sequence length
-         $ plotCDF2 length-whole-genome.length length-whole-genome.png # output graph
+`           
+         # For sequence length distribution   
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta > length-whole-genome.txt # I have attached R code for the distribution 
+         
+         # For GC% distribution
          $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24.fasta > gc-whole-genome.txt # I have attached R code for the distribution
          
+         # For cumulative genome size 
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-whole-genome.length # sequence length
+         $ plotCDF2 length-whole-genome.length length-whole-genome.png # output graph
+         
+
 1. Sequence length distribution   
 
-![len-whole](https://blogfiles.pstatic.net/MjAxODEyMDZfMjMx/MDAxNTQ0MDk2NDA5NjIx.dYbVr_AdfEXVGTCAO-t4T8N7p1Zjqttdrzm9SptmL6Ig.-BELOSgyJzbYZtHz7KGJvXxK93OADlm_55ro2tnSTH0g.PNG.nayeonkim93/length-whole-genome.png)   
+![whole]
 2. Sequence GC% distribution   
 
-![gc-whole](https://blogfiles.pstatic.net/MjAxODEyMDdfMTU1/MDAxNTQ0MTg2ODc2NDY0.awjcP3y71vLdJdsa8-vErJzFYnOFHqznkUP1aeSqT7Ig.LCGLjIa3jFsBK_4emJz3DRFvUKb0aW7f4CXcohYOtacg.JPEG.nayeonkim93/gc_whole.jpeg)
+![gc-whole](https://blogfiles.pstatic.net/MjAxODEyMDdfMTU1/MDAxNTQ0MTg2ODc2NDY0.awjcP3y71vLdJdsa8-vErJzFYnOFHqznkUP1aeSqT7Ig.LCGLjIa3jFsBK_4emJz3DRFvUKb0aW7f4CXcohYOtacg.JPEG.nayeonkim93/gc_whole.jpeg)   
+
 3. Cumulative genome size sorted from largest to smallest sequences   
+
+![len-whole](https://blogfiles.pstatic.net/MjAxODEyMDZfMjMx/MDAxNTQ0MDk2NDA5NjIx.dYbVr_AdfEXVGTCAO-t4T8N7p1Zjqttdrzm9SptmL6Ig.-BELOSgyJzbYZtHz7KGJvXxK93OADlm_55ro2tnSTH0g.PNG.nayeonkim93/length-whole-genome.png)
 
 #### Plots for sequence ≤ 100kb
 bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequal100kb.fasta > gc-less-genome.txt
 
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-lessandequal100kb.fasta > length-less-genome.txt
+         
+          $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequal100kb.fasta > gc-less-genome.txt
+         
          $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-lessandequal100kb.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-less-genome.length 
          $ plotCDF2 length-less-genome.length length-less-genome.png 
-         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequal100kb.fasta > gc-less-genome.txt
+        
          
 1. Sequence length distribution   
 
-![len-less](https://blogfiles.pstatic.net/MjAxODEyMDZfMTIz/MDAxNTQ0MDk2NDE1OTc1.wgP88M7T4ml8YY9kOQf7Kdan9EAsRma3Ob_IVxyzO7kg.W6tvCuNmKciW2upqL0UeNG0tAERO_PIs-lxgjT4KTqcg.PNG.nayeonkim93/length-less-genome.png)   
+![less]()
 2. Sequence GC% distribution   
 
-![gc-less](https://blogfiles.pstatic.net/MjAxODEyMDdfMjc5/MDAxNTQ0MTg2ODcyNzU2.7MZMJuxUSDtlL_nNib7-CF__2cPrnZFpKDmqO0cBLWgg.k-LsH36W7IHkcj_lPsSWUxKsEmLYQG3C7M8G00yHBu4g.JPEG.nayeonkim93/gc_less.jpeg)
+![gc-less](https://blogfiles.pstatic.net/MjAxODEyMDdfMjc5/MDAxNTQ0MTg2ODcyNzU2.7MZMJuxUSDtlL_nNib7-CF__2cPrnZFpKDmqO0cBLWgg.k-LsH36W7IHkcj_lPsSWUxKsEmLYQG3C7M8G00yHBu4g.JPEG.nayeonkim93/gc_less.jpeg)   
+
 3. Cumulative genome size sorted from largest to smallest sequences   
 
-#### Plots for sequence > 100kb
+![len-less](https://blogfiles.pstatic.net/MjAxODEyMDZfMTIz/MDAxNTQ0MDk2NDE1OTc1.wgP88M7T4ml8YY9kOQf7Kdan9EAsRma3Ob_IVxyzO7kg.W6tvCuNmKciW2upqL0UeNG0tAERO_PIs-lxgjT4KTqcg.PNG.nayeonkim93/length-less-genome.png)   
 
+#### Plots for sequence > 100kb
+            
+         $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-greater100kb.fasta > length-great-genome.txt
+         
+         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-greater100kb.fasta > gc-great-genome.txt
+         
          $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-r6.24-greater100kb.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nseq_length\t0" } { print "seq_length\t" $1 } ' > length-great-genome.length
          $ plotCDF2 length-great-genome.length length-great-genome.png
-         $ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-greater100kb.fasta > gc-great-genome.txt
+         
  
 1. Sequence length distribution    
 
-![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)   
+![great]()
 2. Sequence GC% distribution  
 
-![gc-great](https://blogfiles.pstatic.net/MjAxODEyMDdfMjM4/MDAxNTQ0MTg2ODY4MTUx.mm1wetLqCkDghUCLt2dy8Be1vnD8q1E0qDpBDtCzjFMg.MfmEU4bCgu6lM9M2iDbUjQpc8aqfGhyOu9AD86_-fHUg.JPEG.nayeonkim93/gc_greater.jpeg)   
+![gc-great](https://blogfiles.pstatic.net/MjAxODEyMDdfMjM4/MDAxNTQ0MTg2ODY4MTUx.mm1wetLqCkDghUCLt2dy8Be1vnD8q1E0qDpBDtCzjFMg.MfmEU4bCgu6lM9M2iDbUjQpc8aqfGhyOu9AD86_-fHUg.JPEG.nayeonkim93/gc_greater.jpeg)  
+
 3. Cumulative genome size sorted from largest to smallest sequences   
+
+![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)   
 
 ## Genome assembly
 
