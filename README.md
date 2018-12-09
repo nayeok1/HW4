@@ -171,6 +171,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             | fold -w 60 \
             > unitigs.fa  
  
+          $ n50 cal-N50-deml-all-chromosome-r6.24.fa
           
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 
