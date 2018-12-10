@@ -161,7 +161,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
 1. Calculate the N50 of your assembly (this can be done with only faSize+awk+sort or with bioawk+awk+sort) and compare it to the Drosophila community reference's contig N50   
                   
-               
+          $ module load jje/jjeutils perl     
           $ n50 () {
             bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
             | sort -rn \
@@ -171,8 +171,10 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             | tee >(n50 /dev/stdin > n50.txt) \
             | fold -w 60 \
             > unitigs.fa  
- 
-          $ n50 cal-N50-deml-all-chromosome-r6.24.fa
+         
+         $ less n50.txt
+          
+4494246          
           
 2. Compare your assembly to the contig assembly (not the scaffold assembly!) from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer   
 
@@ -182,9 +184,9 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
           $ faSplitByN dmel-all-chromosome-r6.24.fasta dmel-all-chromosome-r6.24-contass.fasta
          
 #### Using Mummer
-
+       
           $ # Loading of binaries via module load or PATH reassignment
-            module unload jje/jjeutils
+            module unload jje/jjeutils perl
             source /pub/jje/ee282/bin/.qmbashrc
             module load gnuplot/4.6.0
 
@@ -200,7 +202,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             mummerplot --fat --layout --filter -p ${PREFIX} ${PREFIX}.delta \
             -R ${REF} -Q ${QRY} --png
 
-          
+ ![contig](https://github.com/neelakss/EE282/blob/master/flybase_unitigs.png?raw=true)            
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 
@@ -209,7 +211,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
        
        plotCDF2 {dmel-all-chromosome-contass-r6.24,unitigs}. contiguity_plot.png
        
-![contig](https://blogfiles.pstatic.net/MjAxODEyMTBfMTAx/MDAxNTQ0NDM4MzEyNjUz._iojfadLlhCeK34autc0ej_AVC6-cQ4w9DmLnyrls0Yg.s2uBia_haeGcptEyWWZXB64XGZcAkCk607RQVqfyCowg.PNG.nayeonkim93/contiguity_plot.png)       
+    
        
 4. Calculate BUSCO scores of both assemblies and compare them  
 
