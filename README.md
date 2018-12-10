@@ -217,7 +217,14 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 4. Calculate BUSCO scores of both assemblies and compare them  
 
 #### Running Busco run
-
+       
+      #!/bin/bash  
+      #  
+      #$ -N HW4_busco  
+      #$ -q free128,free72i,free56i,free48i,free40i,free32i,free64  
+      #$ -pe openmp 32 
+      #$ -R Y    
+       
        module load augustus/3.2.1
        module load blast/2.2.31 hmmer/3.1b2 boost/1.54.0
        source /pub/jje/ee282/bin/.buscorc
@@ -233,7 +240,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
        #my busco run
        #you can change the value after -c to tell busco how many cores to run on. Here we are using only 1 core.
-       BUSCO.py -c 1 -i ${QRY} -m ${INPUTTYPE} -o $(basename ${QRY} ${MYEXT})_${MYLIB}${SPTAG} ${OPTIONS}
+       BUSCO.py -c 125 -i ${QRY} -m ${INPUTTYPE} -o $(basename ${QRY} ${MYEXT})_${MYLIB}${SPTAG} ${OPTIONS}
        
        
 C:0.5%[S:0.5%,D:0.0%],F:1.1%,M:98.4%,n:2799
