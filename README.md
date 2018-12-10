@@ -209,6 +209,8 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
        
        plotCDF2 {dmel-all-chromosome-contass-r6.24,unitigs}. contiguity_plot.png
        
+![contig](https://blogfiles.pstatic.net/MjAxODEyMTBfMTAx/MDAxNTQ0NDM4MzEyNjUz._iojfadLlhCeK34autc0ej_AVC6-cQ4w9DmLnyrls0Yg.s2uBia_haeGcptEyWWZXB64XGZcAkCk607RQVqfyCowg.PNG.nayeonkim93/contiguity_plot.png)       
+       
 4. Calculate BUSCO scores of both assemblies and compare them  
 
 #### Running Busco run
