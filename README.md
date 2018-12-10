@@ -202,6 +202,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             mummerplot --fat --layout --filter -p ${PREFIX} ${PREFIX}.delta \
             -R ${REF} -Q ${QRY} --png
   
+  Becuase if I upload through my blog and then link it to it, lower down the quality. So I upload the png file in this HW4 directory. 
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 
