@@ -206,11 +206,13 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 
-       $ bioawk -c fastx ' { print length($seq) } ' dmel-all-chromosome-contass-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nFlyBase_Ctg\t0" } { print "FlyBase_Ctg\t" $1 } ' >  dmel-all-chromosome-contass-r6.24.lengths
-       $ bioawk -c fastx ' { print length($seq) } ' unitigs.fa | sort -rn | awk ' BEGIN { print "Assembly\tLength\nMinimap_Ctg\t0" } { print "Minimap_Ctg\t" $1 } ' > unitigs.lengths
+       $ bioawk -c fastx '{ print length($seq) }' unitigs.fa | sort -rn | awk ' BEGIN { print "Assembly\tLength\nassembly\t0" } { print "assembly\t" $1 } ' > unitigs
+       $ bioawk -c fastx '{ print length($seq) }' dmel-all-chromosome-contass-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\ncontig\t0" } { print "contig\t" $1 } ' > contigass
+       bioawk -c fastx '{ print length($seq) }' dmel-all-chromosome-r6.24.fasta | sort -rn | awk ' BEGIN { print "Assembly\tLength\nscaffold\t0" } {print "scaffold\t" $1 } ' > scaffold
        
-       plotCDF2 {dmel-all-chromosome-contass-r6.24,unitigs}. contiguity_plot.png
+       plotCDF2 unitigs contigass scaffold contig_plot.png
        
+![contig](https://blogfiles.pstatic.net/MjAxODEyMTBfMTAx/MDAxNTQ0NDQxNzg2NzEx.H1BustIvOVqPuzXj9CimHQrhsZBGFoGdk5thJEpPCYog.9hBoDZTXcKop1G8EyYYkHq1F7wGmSp7KZ7gvKnXX6fUg.PNG.nayeonkim93/contig_plot.png)    
     
        
 4. Calculate BUSCO scores of both assemblies and compare them  
