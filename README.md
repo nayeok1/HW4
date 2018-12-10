@@ -201,8 +201,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             nucmer -l 100 -c 150 -d 10 -banded -D 5 -prefix ${PREFIX} ${REF} ${QRY}
             mummerplot --fat --layout --filter -p ${PREFIX} ${PREFIX}.delta \
             -R ${REF} -Q ${QRY} --png
-
- ![contig](https://blogfiles.pstatic.net/MjAxODEyMTBfMTAx/MDAxNTQ0NDM4MzEyNjUz._iojfadLlhCeK34autc0ej_AVC6-cQ4w9DmLnyrls0Yg.s2uBia_haeGcptEyWWZXB64XGZcAkCk607RQVqfyCowg.PNG.nayeonkim93/contiguity_plot.png)            
+  
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 
