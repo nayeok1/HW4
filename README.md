@@ -137,6 +137,12 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
 
 ![len-great](https://blogfiles.pstatic.net/MjAxODEyMDZfMTI0/MDAxNTQ0MDk2NDIyNzk5.Vo5bukEg4yEmMbUl4Nj-TbPIzpZjW8ODyWV-ontO3O0g.hTDhCAvZEppVJodRyZd9sg8o_ELKCaaKU99m4m3L3eIg.PNG.nayeonkim93/length-great-genome.png)   
 
+### Comments on "Summarize partitions of a genome assembly"
+
+### Comments on "Summarize partitions of a genome assembly"
+
+Mostly great. There's something odd going on with your CDF plots for the two partitions (≤ 100kb and > 100kb). This isn't a problem in your whole genome CDF plot. Please double check and see what went wrong. Otherwise, good job. 
+
 ## Genome assembly
 
 ### Assemble a genome from MinION reads
