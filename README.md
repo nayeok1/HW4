@@ -203,6 +203,12 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
             -R ${REF} -Q ${QRY} --png
   
   Becuase if I upload through my blog and then link it to it, lower down the quality. So I upload the png file in this HW4 directory. 
+  
+  ### Hi, I am not sure why you are also having the same issue as Jihye, but you can just embed your image here using your github repo by doing:
+  ```
+  ![contig](https://github.com/nayeok1/HW4/blob/master/congtig.png)
+  ```
+  ![contig](https://github.com/nayeok1/HW4/blob/master/congtig.png)
 
 3. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophila melanogaster on FlyBase using a contiguity plot   
 
@@ -213,7 +219,7 @@ bioawk -c fastx '{ print $name, gc($seq) }' dmel-all-chromosome-r6.24-lessandequ
        plotCDF2 unitigs contigass scaffold contig_plot.png
        
 ![contig](https://blogfiles.pstatic.net/MjAxODEyMTBfMTAx/MDAxNTQ0NDQxNzg2NzEx.H1BustIvOVqPuzXj9CimHQrhsZBGFoGdk5thJEpPCYog.9hBoDZTXcKop1G8EyYYkHq1F7wGmSp7KZ7gvKnXX6fUg.PNG.nayeonkim93/contig_plot.png)    
-    
+
        
 4. Calculate BUSCO scores of both assemblies and compare them  
 
